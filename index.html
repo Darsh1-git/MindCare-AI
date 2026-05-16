@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare AI - Your Personal Mental Health Support</title>
+    <meta name="description" content="Anonymous AI-powered mental health support for teenagers and young adults. Get emotional support, resources, and guided exercises.">
+    <meta name="theme-color" content="#6366f1">
+    
+    <!-- Font Imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>MindCare AI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#chat" class="nav-link">Chat</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#mood" class="nav-link">Mood Tracker</a>
+                <a href="#help" class="nav-link">Help</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Your Mind Deserves Care</h1>
+            <p class="hero-subtitle">Anonymous, AI-powered emotional support tailored for you. Always here. Always confidential.</p>
+            <div class="hero-buttons">
+                <a href="#chat" class="btn btn-primary">Start Chatting Now</a>
+                <a href="#resources" class="btn btn-secondary">Explore Resources</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="floating-card card-2">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="floating-card card-3">
+                <i class="fas fa-smile"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Affirmation -->
+    <section class="affirmation-section">
+        <div class="affirmation-card glass-morphism">
+            <div class="affirmation-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Today's Affirmation</h3>
+            </div>
+            <p class="affirmation-text" id="affirmationText">You are worthy of love and respect, exactly as you are.</p>
+            <button class="btn-icon" id="newAffirmation" aria-label="Get new affirmation">
+                <i class="fas fa-redo"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section id="chat" class="chat-section">
+        <div class="chat-container glass-morphism">
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <h2>Talk to MindCare AI</h2>
+                    <p>Share your thoughts freely. Everything is confidential.</p>
+                </div>
+                <button class="btn-icon" id="clearChat" aria-label="Clear chat history">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm MindCare AI, your personal mental health support assistant. I'm here to listen without judgment and help you feel better. What's on your mind today?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="suggested-prompts" id="suggestedPrompts">
+                <button class="prompt-btn" onclick="sendPrompt('I\'m feeling anxious')">I'm feeling anxious</button>
+                <button class="prompt-btn" onclick="sendPrompt('How do I handle stress?')">How do I handle stress?</button>
+                <button class="prompt-btn" onclick="sendPrompt('I feel lonely')">I feel lonely</button>
+                <button class="prompt-btn" onclick="sendPrompt('Help me sleep better')">Help me sleep better</button>
+            </div>
+
+            <div class="chat-input-area">
+                <form id="chatForm" class="chat-form">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Share your thoughts..." 
+                        autocomplete="off"
+                        aria-label="Chat message input"
+                    >
+                    <button type="submit" class="btn-send" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mental Health Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="section-header">
+            <h2>Mental Health Resources</h2>
+            <p>Explore helpful guides and self-care strategies</p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Anxiety Resource -->
+            <div class="resource-card glass-morphism" data-resource="anxiety">
+                <div class="resource-icon anxiety">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3>Managing Anxiety</h3>
+                <p>Learn effective techniques to calm your mind and body during anxious moments.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+
+            <!-- Depression Resource -->
+            <div class="resource-card glass-morphism" data-resource="depression">
+                <div class="resource-icon depression">
+                    <i class="fas fa-cloud-rain"></i>
+                </div>
+                <h3>Coping with Depression</h3>
+                <p>Discover strategies and self-care practices to lift your mood and find hope.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+
+            <!-- Stress Management -->
+            <div class="resource-card glass-morphism" data-resource="stress">
+                <div class="resource-icon stress">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Stress Management</h3>
+                <p>Master proven methods to handle daily stress and prevent burnout.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+
+            <!-- Sleep -->
+            <div class="resource-card glass-morphism" data-resource="sleep">
+                <div class="resource-icon sleep">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <h3>Better Sleep</h3>
+                <p>Improve your sleep quality with practical tips and relaxation techniques.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+
+            <!-- Self-Esteem -->
+            <div class="resource-card glass-morphism" data-resource="esteem">
+                <div class="resource-icon esteem">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Build Self-Esteem</h3>
+                <p>Develop a stronger sense of self-worth and confidence in yourself.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+
+            <!-- Relationships -->
+            <div class="resource-card glass-morphism" data-resource="relationships">
+                <div class="resource-icon relationships">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Healthy Relationships</h3>
+                <p>Build and maintain meaningful connections with others.</p>
+                <button class="btn-outline">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guided Exercises Section -->
+    <section class="exercises-section">
+        <div class="section-header">
+            <h2>Guided Relaxation Exercises</h2>
+            <p>Try these calming techniques whenever you need a moment of peace</p>
+        </div>
+
+        <div class="exercises-grid">
+            <!-- 4-7-8 Breathing -->
+            <div class="exercise-card glass-morphism">
+                <div class="exercise-header">
+                    <i class="fas fa-spa"></i>
+                    <h3>4-7-8 Breathing</h3>
+                </div>
+                <p>A scientifically-backed technique to calm your nervous system in minutes.</p>
+                <button class="btn-exercise" onclick="startExercise('breathing')">
+                    Start Exercise
+                </button>
+            </div>
+
+            <!-- Progressive Muscle Relaxation -->
+            <div class="exercise-card glass-morphism">
+                <div class="exercise-header">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Muscle Relaxation</h3>
+                </div>
+                <p>Release physical tension by progressively relaxing your muscles.</p>
+                <button class="btn-exercise" onclick="startExercise('muscle')">
+                    Start Exercise
+                </button>
+            </div>
+
+            <!-- Mindfulness Meditation -->
+            <div class="exercise-card glass-morphism">
+                <div class="exercise-header">
+                    <i class="fas fa-om"></i>
+                    <h3>Mindfulness Meditation</h3>
+                </div>
+                <p>Ground yourself in the present moment with guided awareness meditation.</p>
+                <button class="btn-exercise" onclick="startExercise('meditation')">
+                    Start Exercise
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood Tracker Section -->
+    <section id="mood" class="mood-section">
+        <div class="section-header">
+            <h2>Mood Tracker</h2>
+            <p>Monitor your emotional patterns and track your progress</p>
+        </div>
+
+        <div class="mood-tracker-container">
+            <div class="mood-input glass-morphism">
+                <h3>How are you feeling today?</h3>
+                <div class="mood-buttons">
+                    <button class="mood-btn" data-mood="happy" title="Happy">
+                        <i class="fas fa-grin-stars"></i>
+                        <span>Happy</span>
+                    </button>
+                    <button class="mood-btn" data-mood="calm" title="Calm">
+                        <i class="fas fa-spa"></i>
+                        <span>Calm</span>
+                    </button>
+                    <button class="mood-btn" data-mood="neutral" title="Neutral">
+                        <i class="fas fa-meh"></i>
+                        <span>Neutral</span>
+                    </button>
+                    <button class="mood-btn" data-mood="sad" title="Sad">
+                        <i class="fas fa-frown"></i>
+                        <span>Sad</span>
+                    </button>
+                    <button class="mood-btn" data-mood="anxious" title="Anxious">
+                        <i class="fas fa-grimace"></i>
+                        <span>Anxious</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mood-analytics glass-morphism">
+                <h3>Your Mood This Week</h3>
+                <canvas id="moodChart"></canvas>
+                <div class="mood-stats" id="moodStats">
+                    <p class="stat-item">
+                        <span class="stat-label">Most Common:</span>
+                        <span class="stat-value" id="commonMood">-</span>
+                    </p>
+                    <p class="stat-item">
+                        <span class="stat-label">Entries:</span>
+                        <span class="stat-value" id="totalEntries">0</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Help Section -->
+    <section id="help" class="help-section">
+        <div class="section-header">
+            <h2>Crisis Support & Help</h2>
+            <p>If you're in crisis, please reach out to someone who can help</p>
+        </div>
+
+        <div class="help-content">
+            <div class="help-card glass-morphism critical">
+                <div class="help-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>National Suicide Prevention Lifeline</h3>
+                <p class="help-phone">988</p>
+                <p class="help-description">Free, confidential, 24/7 support for people in suicidal crisis.</p>
+                <a href="tel:988" class="btn btn-primary">Call Now</a>
+            </div>
+
+            <div class="help-card glass-morphism">
+                <div class="help-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Crisis Text Line</h3>
+                <p class="help-phone">Text HOME to 741741</p>
+                <p class="help-description">24/7 emotional support via text message.</p>
+                <a href="sms:741741?body=HOME" class="btn btn-primary">Text Now</a>
+            </div>
+
+            <div class="help-card glass-morphism">
+                <div class="help-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>International Association for Suicide Prevention</h3>
+                <p class="help-phone">Find local resources</p>
+                <p class="help-description">Worldwide network of suicide prevention centers and crisis services.</p>
+                <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" class="btn btn-primary">Visit Website</a>
+            </div>
+        </div>
+
+        <div class="help-advice glass-morphism">
+            <h3>Remember</h3>
+            <ul class="advice-list">
+                <li><i class="fas fa-check-circle"></i> Your feelings are valid and temporary</li>
+                <li><i class="fas fa-check-circle"></i> Reaching out is a sign of strength, not weakness</li>
+                <li><i class="fas fa-check-circle"></i> Talk to a trusted friend, family member, or counselor</li>
+                <li><i class="fas fa-check-circle"></i> Professional help is available and effective</li>
+                <li><i class="fas fa-check-circle"></i> You deserve support and care</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MindCare AI</h4>
+                <p>Providing anonymous, AI-powered mental health support for everyone.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#resources">Mental Health Resources</a></li>
+                    <li><a href="#mood">Mood Tracker</a></li>
+                    <li><a href="#help">Emergency Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Disclaimer</h4>
+                <p>MindCare AI is not a substitute for professional mental health treatment. Always consult with qualified professionals for serious concerns.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MindCare AI. Created with care for your mental wellbeing.</p>
+        </div>
+    </footer>
+
+    <!-- Exercise Modal -->
+    <div class="modal" id="exerciseModal">
+        <div class="modal-content glass-morphism">
+            <button class="modal-close" onclick="closeExercise()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="exerciseContent"></div>
+        </div>
+    </div>
+
+    <!-- Resource Detail Modal -->
+    <div class="modal" id="resourceModal">
+        <div class="modal-content glass-morphism">
+            <button class="modal-close" onclick="closeResource()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="resourceContent"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
